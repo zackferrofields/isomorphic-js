@@ -1,3 +1,5 @@
+- base = ( 'production' == process.env.NODE_ENV ? 'static' : 'http://localhost:8081' );
+
 html
   head
     title="Isomorphic React Application"
@@ -10,4 +12,4 @@ html
   body
     #react-app!= content
 
-  script(src='http://localhost:8081/js/app.js', defer)
+  script(src=base+'/js/app.js', defer)

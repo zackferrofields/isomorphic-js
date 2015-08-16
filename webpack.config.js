@@ -2,20 +2,19 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:8081',
-    'webpack/hot/only-dev-server',
     './src/client/entry'
   ],
   output: {
-    path: path.join(__dirname, '/public/js/'),
-    filename: 'app.js',
-    publicPath: 'http://localhost:8081/js/'
+    path: path.join(__dirname, 'build/public/js/'),
+    filename: 'app.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.DedupePlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: { warnings: false }
+    })
   ],
   resolve: {
     extensions: ['', '.js', 'jsx']

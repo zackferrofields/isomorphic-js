@@ -4,12 +4,13 @@
   "description": "An Isomorphic React Application",
   "main": "index.js",
   "scripts": {
+    "build": "npm run clean && babel src -d build --optional runtime --stage 0 && webpack --config webpack.config.js",
     "clean": "rm -rf build",
-    "watch-js": "babel src -d build --optional runtime --stage 0 -w",
+    "develop": "npm run watch-js & npm run dev-server & npm run server",
     "dev-server": "node build/server/webpack",
     "server": "nodemon build/server/server",
-    "start": "npm run watch-js & npm run dev-server & npm run server",
-    "build": "npm run clean && babel src -d build --optional runtime --stage 0"
+    "start": "NODE_ENV=production nodemon build/server/server",
+    "watch-js": "babel src -d build --optional runtime --stage 0 -w"
   },
   "author": "zack ferro-fields",
   "license": "ISC",

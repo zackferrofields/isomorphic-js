@@ -7,6 +7,10 @@ const app = express();
 app.set('views', './views');
 app.set('view engine', 'jade');
 
+// set static assets
+app.use('/static', express.static('./public'));
+app.use('/static', express.static('./build/public'));
+
 import routes from '../shared/routes';
 
 app.get('/*', (req, res) => {
