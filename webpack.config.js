@@ -21,7 +21,15 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.(js|jsx)?$/, loaders: ['react-hot', 'babel-loader?optional[]=runtime&stage=0'], exclude: /node_modules/ }
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          optional: ['runtime'],
+          stage: 0
+        }
+      }
     ]
   }
 };
